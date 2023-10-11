@@ -12,7 +12,7 @@ export const getQuestions = async () => {
 
 export const getAnswers = async (questionNo) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/answers/?questionNo=${questionNo}`);
+        const response = await axios.get(`${API_BASE_URL}/answers`);
         return response.data;
     } catch (error) {
         console.error("Error getting answers:", error);

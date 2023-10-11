@@ -43,11 +43,7 @@ app.get("/questions", async (req, res) => {
 
 app.get("/answers", async (req, res) => {
     try {
-        const questionNo = req.query.questionNo;
-        const answers = await Answer.find({ questionNo }); // Assuming "Answer" is the model for answers
-        if (!answers) {
-            return res.status(404).json({ error: "Answers not found" });
-        }
+        const answers = await Answer.find();
         res.json(answers);
     } catch (error) {
         res.status(500).json({ error: "Error retrieving answers" });
