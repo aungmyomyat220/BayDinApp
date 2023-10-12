@@ -10,7 +10,7 @@ export const getQuestions = async () => {
     }
 };
 
-export const getAnswers = async (questionNo) => {
+export const getAnswers = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/answers`);
         return response.data;
