@@ -1,5 +1,5 @@
 'use client'
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {getAnswers, getQuestions} from "../../../api/api";
 import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
@@ -29,12 +29,12 @@ const MainBody = () => {
     };
 
     const handleModalClick = (e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
+        if (!modalRef.current.contains(e.target)) {
             closeModal();
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (isModalOpen) {
             document.addEventListener('click', handleModalClick);
         }
