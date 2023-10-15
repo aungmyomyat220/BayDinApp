@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 // MongoDB サーバーの接続文字列
-const dbURI = "mongodb://0.0.0.0:27017/BayDinApp";
+const dbURI = process.env.MONGODB_URI;
 
 // MongoDB にローカルで接続する
 mongoose
