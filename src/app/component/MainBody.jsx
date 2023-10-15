@@ -121,13 +121,10 @@ const MainBody = () => {
                 </div>
             )}
 
-            <label className='flex flex-col relative'>
-                <span className='absolute mt-2 mx-3 text-gray-600 placeholder'>သိလိုသည်များကိုရှာဖွေပါ...</span>
-                <input type="text" className="input input-bordered rounded-lg focus:placeholder:-mt-3"
-                       value={searchQuery}
-                       onChange={(e) => setSearchQuery(e.target.value)}>
-                </input>
-            </label>
+            <input type="text" className="input input-bordered rounded-lg" placeholder='သိလိုသည်များကိုရှာဖွေပါ...'
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}>
+            </input>
 
             <table className="bg-gray-100 table-auto border-2 border-collapse border-black w-full mt-5 text-amber-900 font-bold">
                 <tbody>
