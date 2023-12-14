@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config();
 
 // MongoDB サーバーの接続文字列
-const dbURI = "mongodb://0.0.0.0:27017/BayDinApp";
+const dbURI =  process.env.MONGODB_URI;
 
 // MongoDB にローカルで接続する
 mongoose
