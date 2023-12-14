@@ -1,8 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const port = process.env.PORT || 3000;
 // MongoDB にローカルで接続する
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
@@ -47,6 +48,6 @@ app.get("/answers", async (req, res) => {
 });
 
 
-app.listen(5000, () => {
-    console.log("Server started on port 5000");
+app.listen(port, () => {
+    console.log("Server started on port ",port);
 });
