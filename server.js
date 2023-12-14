@@ -2,14 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// MongoDB サーバーの接続文字列
-const dbURI = process.env.DATABASE_URL;
-
-// Now you can use the 'databaseUrl' variable in your code
-console.log(`Database URL: ${dbURI}`);
-
 // MongoDB にローカルで接続する
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
     })
