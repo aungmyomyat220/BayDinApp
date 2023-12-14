@@ -6,8 +6,7 @@ const cors = require("cors");
 const dbURI =  "mongodb+srv://aungmyomyat:ammyat49803912@cluster0.dhkrkbv.mongodb.net/BayDinApp"
 
 // MongoDB にローカルで接続する
-mongoose
-    .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
     })
