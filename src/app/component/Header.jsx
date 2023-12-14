@@ -9,6 +9,7 @@ const Header = () => {
                     <span className='text-5xl font-bold block text-amber-900'>မင်းသိင်္ခ</span>
                     <span className='ml-1'>လက်ထောက်ဗေဒင်</span>
                 </div>
+
                 <div>
                     <Image src={MinTheinKha} alt="MinTheinKhaLogo" className='w-24 h-24 rounded-full mr-5'></Image>
                 </div>
