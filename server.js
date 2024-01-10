@@ -4,7 +4,7 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 // MongoDB にローカルで接続する
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
         console.log("Connected to MongoDB");
     })
