@@ -29,6 +29,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/',async (req,res)=>{
+    res.status(200).json({success : "success" });
+})
+
 app.get("/questions", async (req, res) => {
     try {
         const questions = await Question.find();
