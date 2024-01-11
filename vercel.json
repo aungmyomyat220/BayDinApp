@@ -13,6 +13,6 @@
     }
   ],
   "env": {
-    "MONGODB_URL": "$MONGODB_URI"
+    "MONGODB_URL": "$MONGODB_URL"
   }
 }
