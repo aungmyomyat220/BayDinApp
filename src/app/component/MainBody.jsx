@@ -109,6 +109,7 @@ const MainBody = () => {
                             {randomNumbers.map((randomNumber,index) => (
                                 <span key={index} className='bg-amber-900 text-white mr-1 w-10 mt-1 h-10 flex justify-center cursor-pointer items-center' onClick={() => clickAnswer(randomNumber)}>{randomNumber}</span>
                             ))}
+                                <suspense fallback={loading}></suspense>
                             </div>
                         </div>
                     </div>
