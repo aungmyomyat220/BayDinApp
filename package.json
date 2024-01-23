@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build" : "echo hello"
+    "vercel-build" : "next build"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.36.1",
