@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const port = process.env.PORT || 3000;
 // MongoDB にローカルで接続する
-console.log('MONGODB_URI:', process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+console.log('MONGODB_URI:', process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -28,6 +28,10 @@ const Answer = mongoose.model("Answers", answersSchema);
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.get('/',async (req,res)=>{
+    res.status(200).json({success : "success" });
+})
 
 app.get("/questions", async (req, res) => {
     try {
