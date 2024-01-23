@@ -1,6 +1,6 @@
 'use client'
 import React, {useEffect, useRef, useState} from 'react';
-import {getAnswers, getQuestions} from "../../../api/api";
+import {getAnswers, getQuestions} from "../api";
 import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
 import MinTheinKha from "../../../image/mintheinkhalogo.png";
