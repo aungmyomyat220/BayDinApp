@@ -1,57 +1,49 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-const port = process.env.PORT || 3000;
-// MongoDB にローカルで接続する
-console.log('MONGODB_URI:', process.env.MONGODB_URL);
-mongoose.connect(process.env.MONGODB_URL)
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB", err);
-    });
+const fs = require("fs");
+const path = require("path");
 
-const questionsSchema = new mongoose.Schema({
-    questionNo : String,
-    questionName : String
-});
-
-const answersSchema = new mongoose.Schema({
-    questionNo : String,
-    answerNo : String,
-    answerResult : String
-});
-const Question = mongoose.model("Questions", questionsSchema);
-const Answer = mongoose.model("Answers", answersSchema);
-
+const port = 8000;
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
-app.get('/',async (req,res)=>{
-    res.status(200).json({success : "success" });
-})
+// Load data from JSON file
+const dataPath = path.join(__dirname, "MinTheinKha.LatHtaukBayDin.json");
+let questions = [];
+let answers = [];
 
-app.get("/questions", async (req, res) => {
-    try {
-        const questions = await Question.find();
-        res.json(questions);
-    } catch (error) {
-        res.status(500).json({ error: "Error retrieving questions" });
-    }
+try {
+    const rawData = fs.readFileSync(dataPath, "utf-8");
+    const jsonData = JSON.parse(rawData);
+    questions = jsonData.questions || [];
+    answers = jsonData.answers || [];
+    console.log("JSON data loaded successfully.");
+} catch (error) {
+    console.error("Failed to load JSON data:", error);
+}
+
+// Health check
+app.get("/", (req, res) => {
+    res.status(200).json({ success: "Server running" });
 });
 
-app.get("/answers", async (req, res) => {
-    try {
-        const answers = await Answer.find();
-        res.json(answers);
-    } catch (error) {
-        res.status(500).json({ error: "Error retrieving answers" });
-    }
+// Return all questions
+app.get("/questions", (req, res) => {
+    res.json(questions);
 });
 
+// Return answers, optionally filtered by questionNo
+app.get("/answers", (req, res) => {
+    const { questionNo } = req.query;
+    if (questionNo) {
+        const filtered = answers.filter(a => String(a.questionNo) === String(questionNo));
+        return res.json(filtered);
+    }
+    res.json(answers);
+});
 
 app.listen(port, () => {
-    console.log("Server started on port ",port);
+    console.log(`Server started on port ${port}`);
 });
